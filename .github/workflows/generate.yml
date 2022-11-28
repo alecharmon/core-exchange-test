@@ -66,6 +66,6 @@ jobs:
         id: create-pull-request
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: \\[AUTOMATED\\] Update generated sample server implementations
-          title: \\[AUTOMATED\\] Update generated sample server implementations
+          commit-message: "[AUTOMATED] Update generated sample server implementations"
+          title: "[AUTOMATED] Update generated sample server implementations"
           token: ${{ secrets.ACCESS_TOKEN }}
