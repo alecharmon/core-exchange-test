@@ -15,10 +15,10 @@ jobs:
             matrix:
                 target:
                     - go-gin-server
-                    - python-flask
-                    - php-laravel 
-                    - ruby-on-rails
-                    - nodejs-express-server
+                    #- python-flask
+                    #- php-laravel 
+                    #- ruby-on-rails
+                    #- nodejs-express-server
                 cx-version:
                     # downgradePath represents the spec file path as created as 
                     # part of scripts/downgrade-oas-version.sh in a previous job 
