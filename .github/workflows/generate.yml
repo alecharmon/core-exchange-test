@@ -15,10 +15,10 @@ jobs:
             matrix:
                 target:
                     - go-gin-server
-                    #- python-flask
-                    #- php-laravel 
-                    #- ruby-on-rails
-                    #- nodejs-express-server
+                    - python-flask
+                    - php-laravel 
+                    - ruby-on-rails
+                    - nodejs-express-server
                 cx-version:
                     # downgradePath represents the spec file path as created as 
                     # part of scripts/downgrade-oas-version.sh in a previous job 
@@ -56,14 +56,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - run: mkdir -p generated/
       - name: Download Generated Code
         uses: actions/download-artifact@v3
         with:
           name: generated-server-code
+          path: generated/
       - name: Create Pull Request
         id: create-pull-request
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: \[AUTOMATED\] Update generated sample server implementations
-          title: \[AUTOMATED\] Update generated sample server implementations
+          commit-message: \\[AUTOMATED\\] Update generated sample server implementations
+          title: \\[AUTOMATED\\] Update generated sample server implementations
           token: ${{ secrets.ACCESS_TOKEN }}
