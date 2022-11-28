@@ -22,6 +22,7 @@ jobs:
                 cx-version:
                     # downgradePath represents the spec file path as created as 
                     # part of scripts/downgrade-oas-version.sh in a previous job 
+                    - {semantic: "5.1", downgradePath: "5dot1"}
                     - {semantic: "5.0", downgradePath: "5dot0"}
                     - {semantic: "4.6", downgradePath: "4dot6"}
     steps:
