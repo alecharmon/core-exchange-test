@@ -45,9 +45,25 @@ jobs:
           generator: ${{ matrix.target }}
           openapi-file: tmp/corex-${{matrix.cx-version.downgradePath}}-304.yaml
           command-args: -o generated/${{ matrix.cx-version.semantic }}/${{ matrix.target }}
+      - name: Upload Generated Code
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-server-code
+          path: generated/
+  pull-request:
+    needs: [ generate ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download Generated Code
+        uses: actions/download-artifact@v3
+        with:
+          name: generated-server-code
       - name: Create Pull Request
-        id: cpr
+        id: create-pull-request
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: \[AUTOMATED\] Update generated sample server implementations
-          title: \[AUTOMATED\] Update generated sample server implementations 
+          title: \[AUTOMATED\] Update generated sample server implementations
+          token: ${{ secrets.ACCESS_TOKEN }}
